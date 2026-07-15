@@ -45,7 +45,7 @@ class Task(Base):
     title: Mapped[str] = mapped_column(String(255), index= True, unique= True, nullable= False)
     description: Mapped[str] = mapped_column(Text, nullable= True)
     status: Mapped[TaskStatus] = mapped_column(Enum(TaskStatus), default= TaskStatus.todo, nullable=False, index= True)
-    project_id: Mapped[int] = mapped_column(ForeignKey("project.id", ondelete= "CASCADE"), nullable= False)
+    project_id: Mapped[int] = mapped_column(ForeignKey("projects.id", ondelete= "CASCADE"), nullable= False)
     assignee_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete= "CASCADE"), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default= func.now(), nullable=False)
 
